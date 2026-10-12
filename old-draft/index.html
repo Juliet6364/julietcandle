@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juliet Candle | Hand-poured soy candles</title>
+<meta name="description" content="Small-batch soy candles, hand-poured by Juliet. Choose a scent and order by message.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="brand" href="#top">Juliet Candle</a>
+  <nav aria-label="Main">
+    <a href="#scents">Scents</a>
+    <a href="#making">How they're made</a>
+    <a href="#order">Order</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <h1 id="hero-title">Hand-poured soy candles, made in small batches.</h1>
+      <p>Each one is poured, cured and trimmed by hand. Pick a scent, then message us to order.</p>
+      <a class="btn" href="#scents">See the scents</a>
+    </div>
+
+    <button class="candle" id="candle" type="button" aria-pressed="false" aria-label="Light the candle">
+      <span class="flame" aria-hidden="true"><i></i></span>
+      <span class="wick" aria-hidden="true"></span>
+      <span class="body" aria-hidden="true"></span>
+    </button>
+    <p class="hint" id="hint">Tap the candle to light it</p>
+  </section>
+
+  <section class="scents" id="scents" aria-labelledby="scents-title">
+    <h2 id="scents-title">Choose your scent</h2>
+    <p class="lede">Every candle is 100% soy wax with a cotton wick. Placeholder scents below: replace them with your own.</p>
+
+    <ul class="grid">
+      <li class="item" style="--glass:#7d8f7a; --wax:#e8e2cf">
+        <div class="jar" aria-hidden="true"><span class="lid"></span><span class="label">Juliet</span></div>
+        <h3>Monsoon Cedar</h3>
+        <p>Rain on warm stone, cedarwood and a little green leaf.</p>
+        <a href="mailto:hello@example.com?subject=Order%3A%20Monsoon%20Cedar">Order this scent</a>
+      </li>
+      <li class="item" style="--glass:#b5707a; --wax:#f1dcd6">
+        <div class="jar" aria-hidden="true"><span class="lid"></span><span class="label">Juliet</span></div>
+        <h3>Tea Rose</h3>
+        <p>Fresh petals, black tea and soft musk.</p>
+        <a href="mailto:hello@example.com?subject=Order%3A%20Tea%20Rose">Order this scent</a>
+      </li>
+      <li class="item" style="--glass:#c08a3c; --wax:#f3e3bd">
+        <div class="jar" aria-hidden="true"><span class="lid"></span><span class="label">Juliet</span></div>
+        <h3>Smoked Vanilla</h3>
+        <p>Warm vanilla bean with a thread of woodsmoke.</p>
+        <a href="mailto:hello@example.com?subject=Order%3A%20Smoked%20Vanilla">Order this scent</a>
+      </li>
+      <li class="item" style="--glass:#4f5f78; --wax:#dfe3ea">
+        <div class="jar" aria-hidden="true"><span class="lid"></span><span class="label">Juliet</span></div>
+        <h3>Cardamom Chai</h3>
+        <p>Cardamom, ginger and cinnamon, like a pot on the stove.</p>
+        <a href="mailto:hello@example.com?subject=Order%3A%20Cardamom%20Chai">Order this scent</a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="making" id="making" aria-labelledby="making-title">
+    <h2 id="making-title">How a candle gets made</h2>
+    <ol>
+      <li><h3>Melt and scent</h3><p>Soy wax is melted slowly, then blended with fragrance oil.</p></li>
+      <li><h3>Pour</h3><p>The wax is poured by hand around a centred cotton wick.</p></li>
+      <li><h3>Cure</h3><p>Candles rest for days so the scent settles and burns evenly.</p></li>
+      <li><h3>Trim and pack</h3><p>Each wick is trimmed to size before the candle is packed.</p></li>
+    </ol>
+  </section>
+
+  <section class="order" id="order" aria-labelledby="order-title">
+    <h2 id="order-title">Order a candle</h2>
+    <p>Tell us the scent, how many, and where to deliver. We reply with the price and how to pay.</p>
+    <a class="btn" href="mailto:hello@example.com?subject=Candle%20order">Send an order message</a>
+  </section>
+</main>
+
+<footer>
+  <p>Juliet Candle. Hand-poured with care.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

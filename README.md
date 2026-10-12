@@ -1,11 +1,13 @@
-# Juliet Candle
+# Flicker n Flame by Juliet
 
-A simple one-page website for a small candle business. No build step: open `index.html` in a browser.
+Website for Flicker n Flame by Juliet, handcrafted soy wax candles.
+No build step: `index.html` and the `img/` folder are the whole site.
 
-## Things to replace
-- Email address `hello@example.com` in `index.html` (order links)
-- Scent names and descriptions (placeholders)
-- Business name, if "Juliet Candle" is not the right one
+- Products, prices and colours: edit the `PRODUCTS` list near the bottom of `index.html`.
+- WhatsApp number and Instagram handle: edit `SHOP` at the top of the script in `index.html`.
+- Photos live in `img/`.
+- `old-draft/` holds the earlier "Juliet Candle" draft.
 
 ## Publishing
-Turn on GitHub Pages for this repo (Settings, Pages, deploy from the `main` branch, root folder).
+Settings → Pages → Deploy from a branch → `claude/candle-site`, folder `/ (root)`.
+The site then appears at https://juliet6364.github.io/julietcandle/

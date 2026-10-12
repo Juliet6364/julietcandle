@@ -2,95 +2,518 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Juliet Candle | Hand-poured soy candles</title>
-<meta name="description" content="Small-batch soy candles, hand-poured by Juliet. Choose a scent and order by message.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Flicker n Flame by Juliet</title>
+<meta name="description" content="Handcrafted soy wax candles by Juliet: botanical dough bowls, succulent jars, rose hearts and swirl candles. Order on WhatsApp.">
+<meta property="og:title" content="Flicker n Flame by Juliet">
+<meta property="og:description" content="Handcrafted soy wax candles. Favours, return gifts and bulk orders.">
+<meta property="og:image" content="img/botanical-bowl.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3c4 6 6 9 6 13a6 6 0 0 1-12 0c0-4 2-7 6-13z' fill='%234F6E52'/%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Young+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600&family=Parisienne&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a botanical market stall — wordmark header, photo-led hero, filterable product shelf, then custom orders, care and contact. */
+:root{
+  --bg:#F2F4EE; --panel:#E6EBE1; --card:#FBFCF8; --ink:#1E2A22; --muted:#56655A;
+  --line:#D3DACD; --sage:#4F6E52; --sage-soft:#DCE6D8; --walnut:#6E4B32; --on-sage:#F6F8F3;
+  --shadow:0 1px 2px rgba(30,42,34,.06),0 8px 24px rgba(30,42,34,.06);
+  --f-display:"Gloock",Georgia,"Times New Roman",serif;
+  --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-script:"Parisienne","Brush Script MT",cursive;
+  --f-mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#131915; --panel:#1B231E; --card:#1A211C; --ink:#E7ECE3; --muted:#A2AFA4;
+  --line:#2D3930; --sage:#9EBE9C; --sage-soft:#24322A; --walnut:#D2A27B; --on-sage:#122016;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#131915; --panel:#1B231E; --card:#1A211C; --ink:#E7ECE3; --muted:#A2AFA4;
+  --line:#2D3930; --sage:#9EBE9C; --sage-soft:#24322A; --walnut:#D2A27B; --on-sage:#122016;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark}
+
+*{box-sizing:border-box}
+img{max-width:100%}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--sage);outline-offset:3px;border-radius:6px}
+.eyebrow{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.mono{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.01em}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;padding-block:12px}
+.brand{display:flex;flex-direction:column;line-height:1;text-decoration:none}
+.brand .w{font-family:var(--f-script);font-size:1.9rem;color:var(--ink)}
+.brand .by{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:2px;padding-left:4px}
+nav.links{display:flex;gap:22px;margin-left:auto;font-size:.92rem}
+nav.links a{text-decoration:none;color:var(--muted)}
+nav.links a:hover{color:var(--ink)}
+.bag-btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 14px;font-weight:500}
+.bag-btn .n{background:var(--sage);color:var(--on-sage);border-radius:999px;min-width:22px;height:22px;display:inline-grid;place-items:center;font-size:.75rem;font-variant-numeric:tabular-nums;padding:0 6px}
+@media (max-width:760px){nav.links{display:none}.bag-btn{margin-left:auto}}
+
+/* hero */
+.hero{padding-block:clamp(36px,6vw,72px)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(2.3rem,5.4vw,4.2rem);letter-spacing:-.01em}
+.hero h1 em{font-family:var(--f-script);font-style:normal;color:var(--sage);font-size:1.12em;line-height:.8}
+.hero .lede{margin-top:18px;max-width:46ch;color:var(--muted);font-size:1.08rem}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:12px 22px;font-weight:600;text-decoration:none;border:1px solid transparent;font-size:.95rem}
+.btn.primary{background:var(--sage);color:var(--on-sage)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{border-color:var(--line);background:var(--card)}
+.facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:32px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.86rem}
+.facts span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--sage);margin-right:8px;vertical-align:middle}
+.hero-media{position:relative;min-width:0}
+.hero-media .main{width:100%;aspect-ratio:900/822;object-fit:cover;border-radius:22px;box-shadow:var(--shadow);display:block}
+.hero-media .float{position:absolute;width:38%;aspect-ratio:3/4;object-fit:cover;border-radius:16px;left:-7%;bottom:-8%;border:6px solid var(--bg);box-shadow:var(--shadow)}
+.hero-media .tag{position:absolute;right:14px;top:14px;background:var(--card);border-radius:999px;padding:6px 12px;font-size:.8rem;box-shadow:var(--shadow)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero-media{margin:0 0 30px 6%}}
+
+/* shop */
+section.block{padding-block:clamp(48px,7vw,88px)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px 32px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(1.9rem,3.6vw,2.8rem)}
+.sec-head p{color:var(--muted);max-width:52ch;margin-top:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:transparent;border-radius:999px;padding:7px 15px;font-size:.88rem;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:28px 22px}
+.card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;min-width:0}
+.media{position:relative;aspect-ratio:4/5;background:var(--panel);overflow:hidden}
+.media img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .25s}
+.media svg{width:100%;height:100%;display:block}
+.media .zoom{position:absolute;inset:0;background:none;border:0;padding:0}
+.badge{position:absolute;left:12px;top:12px;background:var(--card);color:var(--ink);font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+.photos{position:absolute;right:12px;bottom:12px;background:rgba(20,26,22,.62);color:#fff;font-size:.74rem;padding:4px 10px;border-radius:999px;pointer-events:none}
+.soon{position:absolute;right:12px;bottom:12px;color:var(--muted);font-size:.72rem;font-family:var(--f-mono)}
+.body{display:flex;flex-direction:column;gap:12px;padding:18px 18px 20px;flex:1}
+.body h3{font-size:1.35rem}
+.body .desc{color:var(--muted);font-size:.92rem}
+.specs{display:flex;flex-wrap:wrap;gap:6px}
+.specs span{background:var(--panel);border-radius:6px;padding:3px 8px;color:var(--muted)}
+.opt-label{font-size:.82rem;color:var(--muted)}
+.opt-label b{color:var(--ink);font-weight:600}
+.swatches{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.sw{width:30px;height:30px;border-radius:50%;border:1px solid rgba(0,0,0,.15);padding:0;position:relative;background:var(--c)}
+.sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--card),0 0 0 4px var(--ink)}
+.selects{display:grid;grid-template-columns:1fr;gap:8px}
+.selects.two{grid-template-columns:1fr 1fr}
+select{width:100%;font:inherit;font-size:.88rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 10px}
+.buy{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:12px;border-top:1px dashed var(--line)}
+.price{font-family:var(--f-display);font-size:1.45rem;font-variant-numeric:tabular-nums}
+.price small{font-family:var(--f-body);font-size:.75rem;color:var(--muted);margin-left:4px}
+.add{background:var(--sage);color:var(--on-sage);border:0;border-radius:999px;padding:10px 18px;font-weight:600;font-size:.9rem}
+.add.done{background:var(--ink);color:var(--bg)}
+
+/* custom */
+.custom{background:var(--sage-soft)}
+.custom .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,5vw,64px);align-items:center}
+.custom img{width:100%;aspect-ratio:900/822;object-fit:cover;border-radius:20px;display:block}
+.custom ul{list-style:none;padding:0;margin:22px 0 26px;display:grid;gap:14px}
+.custom li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:baseline}
+.custom li b{font-family:var(--f-display);font-weight:400;font-size:1.15rem}
+.custom li span{grid-column:2;color:var(--muted);font-size:.93rem}
+.custom li::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--sage);grid-row:1;align-self:center}
+@media (max-width:860px){.custom .wrap{grid-template-columns:1fr}}
+
+/* care */
+.care-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:1px solid var(--line)}
+.care-grid div{padding:22px 22px 22px 0;border-bottom:1px solid var(--line)}
+.care-grid .k{font-family:var(--f-mono);font-size:1.6rem;color:var(--walnut);display:block;margin-bottom:6px}
+.care-grid p{color:var(--muted);font-size:.93rem;max-width:34ch}
+.care-grid h3{font-size:1.1rem;margin-bottom:6px;font-family:var(--f-body);font-weight:600}
+
+/* about + contact */
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px)}
+.about blockquote{margin:0;font-family:var(--f-script);font-size:clamp(2rem,4vw,3rem);line-height:1.15;color:var(--sage)}
+.about p{color:var(--muted);margin-top:14px;max-width:56ch}
+.contact-list{display:grid;gap:12px;margin-top:20px}
+.contact-list div{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:14px}
+.contact-list .l{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);min-width:90px}
+@media (max-width:760px){.about .wrap{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:.85rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
+
+/* bag drawer */
+.scrim{position:fixed;inset:0;background:rgba(10,14,11,.45);z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--bg);z-index:41;display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.2);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.drawer header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line)}
+.drawer header h2{font-size:1.5rem}
+.x{background:none;border:1px solid var(--line);border-radius:999px;width:36px;height:36px}
+.lines{flex:1;overflow:auto;padding:8px 20px}
+.line{display:grid;grid-template-columns:64px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);align-items:center}
+.line .thumb{width:64px;height:76px;border-radius:10px;overflow:hidden;background:var(--panel)}
+.line .thumb img,.line .thumb svg{width:100%;height:100%;object-fit:cover;display:block}
+.line .t{font-weight:600;font-size:.95rem}
+.line .m{color:var(--muted);font-size:.8rem}
+.qty{display:inline-flex;align-items:center;gap:2px;margin-top:6px;border:1px solid var(--line);border-radius:999px}
+.qty button{background:none;border:0;width:28px;height:28px}
+.qty span{min-width:20px;text-align:center;font-variant-numeric:tabular-nums;font-size:.9rem}
+.line .p{font-variant-numeric:tabular-nums;font-weight:600}
+.empty{padding:40px 0;text-align:center;color:var(--muted)}
+.drawer footer{border-top:1px solid var(--line);padding:18px 20px;display:grid;gap:12px;color:var(--ink);font-size:1rem}
+.sum{display:flex;justify-content:space-between;align-items:baseline}
+.sum b{font-family:var(--f-display);font-weight:400;font-size:1.6rem;font-variant-numeric:tabular-nums}
+.note{font-size:.82rem;color:var(--muted)}
+.drawer .btn{width:100%}
+.toast{font-size:.85rem;color:var(--sage);min-height:1.2em}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,14,11,.88);display:grid;place-items:center;padding:20px}
+.lb img{max-width:min(92vw,900px);max-height:78vh;border-radius:14px;object-fit:contain}
+.lb .ctrl{position:absolute;bottom:calc(24px + env(safe-area-inset-bottom,0px));left:0;right:0;display:flex;justify-content:center;gap:12px;align-items:center;color:#fff}
+.lb .ctrl button{background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:999px;padding:10px 18px}
+.lb .close{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:16px;background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:999px;width:42px;height:42px;font-size:1.2rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
 </head>
 <body>
 
-<header class="bar">
-  <a class="brand" href="#top">Juliet Candle</a>
-  <nav aria-label="Main">
-    <a href="#scents">Scents</a>
-    <a href="#making">How they're made</a>
-    <a href="#order">Order</a>
-  </nav>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Flicker n Flame home"><span class="w">Flicker n Flame</span><span class="by">by Juliet</span></a>
+    <nav class="links" aria-label="Main">
+      <a href="#shop">Shop</a><a href="#custom">Custom orders</a><a href="#care">Candle care</a><a href="#contact">Contact</a><a href="https://www.instagram.com/flickernflameby_juliet/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <button class="bag-btn" id="openBag" aria-label="Open bag">Bag <span class="n" id="bagCount">0</span></button>
+  </div>
 </header>
 
 <main id="top">
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="glow" aria-hidden="true"></div>
-    <div class="hero-copy">
-      <h1 id="hero-title">Hand-poured soy candles, made in small batches.</h1>
-      <p>Each one is poured, cured and trimmed by hand. Pick a scent, then message us to order.</p>
-      <a class="btn" href="#scents">See the scents</a>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Hand-poured soy wax candles · Favours, return gifts &amp; bulk orders</p>
+        <h1 style="margin-top:14px">Little gardens you can <em>light</em></h1>
+        <p class="lede">Wax roses, succulents and sculpted swirls, poured and finished by hand by Juliet. Every piece comes in a choice of colours and scents.</p>
+        <div class="ctas">
+          <a class="btn primary" href="#shop">Shop candles</a>
+          <a class="btn ghost" href="#custom">Wedding &amp; bulk orders</a>
+        </div>
+        <div class="facts"><span>Soy wax</span><span>Poured in small batches</span><span>Custom colours</span><span>Gift-ready packing</span></div>
+      </div>
+      <div class="hero-media">
+        <img class="main" src="img/botanical-bowl.webp" alt="Row of wooden dough bowl candles filled with sage-green wax roses, succulents and white daisies">
+        <img class="float" src="img/heart-5.webp" alt="Pink rose heart candle">
+        <span class="tag">Signature dough bowls</span>
+      </div>
     </div>
-
-    <button class="candle" id="candle" type="button" aria-pressed="false" aria-label="Light the candle">
-      <span class="flame" aria-hidden="true"><i></i></span>
-      <span class="wick" aria-hidden="true"></span>
-      <span class="body" aria-hidden="true"></span>
-    </button>
-    <p class="hint" id="hint">Tap the candle to light it</p>
   </section>
 
-  <section class="scents" id="scents" aria-labelledby="scents-title">
-    <h2 id="scents-title">Choose your scent</h2>
-    <p class="lede">Every candle is 100% soy wax with a cotton wick. Placeholder scents below: replace them with your own.</p>
-
-    <ul class="grid">
-      <li class="item" style="--glass:#7d8f7a; --wax:#e8e2cf">
-        <div class="jar" aria-hidden="true"><span class="lid"></span><span class="label">Juliet</span></div>
-        <h3>Monsoon Cedar</h3>
-        <p>Rain on warm stone, cedarwood and a little green leaf.</p>
-        <a href="mailto:hello@example.com?subject=Order%3A%20Monsoon%20Cedar">Order this scent</a>
-      </li>
-      <li class="item" style="--glass:#b5707a; --wax:#f1dcd6">
-        <div class="jar" aria-hidden="true"><span class="lid"></span><span class="label">Juliet</span></div>
-        <h3>Tea Rose</h3>
-        <p>Fresh petals, black tea and soft musk.</p>
-        <a href="mailto:hello@example.com?subject=Order%3A%20Tea%20Rose">Order this scent</a>
-      </li>
-      <li class="item" style="--glass:#c08a3c; --wax:#f3e3bd">
-        <div class="jar" aria-hidden="true"><span class="lid"></span><span class="label">Juliet</span></div>
-        <h3>Smoked Vanilla</h3>
-        <p>Warm vanilla bean with a thread of woodsmoke.</p>
-        <a href="mailto:hello@example.com?subject=Order%3A%20Smoked%20Vanilla">Order this scent</a>
-      </li>
-      <li class="item" style="--glass:#4f5f78; --wax:#dfe3ea">
-        <div class="jar" aria-hidden="true"><span class="lid"></span><span class="label">Juliet</span></div>
-        <h3>Cardamom Chai</h3>
-        <p>Cardamom, ginger and cinnamon, like a pot on the stove.</p>
-        <a href="mailto:hello@example.com?subject=Order%3A%20Cardamom%20Chai">Order this scent</a>
-      </li>
-    </ul>
+  <section class="block" id="shop" style="padding-top:24px">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">The shop</p>
+          <h2 style="margin-top:8px">Pick a candle, a colour and a scent</h2>
+          <p>Prices are per piece in Indian rupees. Tap a colour to see it; tap a photo to see more.</p>
+        </div>
+        <div class="chips" role="group" aria-label="Filter candles" id="chips"></div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
   </section>
 
-  <section class="making" id="making" aria-labelledby="making-title">
-    <h2 id="making-title">How a candle gets made</h2>
-    <ol>
-      <li><h3>Melt and scent</h3><p>Soy wax is melted slowly, then blended with fragrance oil.</p></li>
-      <li><h3>Pour</h3><p>The wax is poured by hand around a centred cotton wick.</p></li>
-      <li><h3>Cure</h3><p>Candles rest for days so the scent settles and burns evenly.</p></li>
-      <li><h3>Trim and pack</h3><p>Each wick is trimmed to size before the candle is packed.</p></li>
-    </ol>
+  <section class="block custom" id="custom">
+    <div class="wrap">
+      <img src="img/ivory-bowl.webp" alt="Ivory dough bowl candles filled with white wax roses and daisies">
+      <div>
+        <p class="eyebrow">Custom &amp; bulk orders</p>
+        <h2 style="margin-top:8px;font-size:clamp(1.9rem,3.6vw,2.8rem)">Made in your colours, for your day</h2>
+        <ul>
+          <li><b>Wedding &amp; event favours</b><span>Rose hearts and swirl candles matched to your palette, wrapped and tagged.</span></li>
+          <li><b>Return gifts</b><span>Small sculpted candles for birthdays, baby showers and housewarmings.</span></li>
+          <li><b>Centrepieces &amp; hampers</b><span>Dough bowls for tables, and mixed boxes for corporate and festive gifting.</span></li>
+        </ul>
+        <a class="btn primary" href="#contact">Ask about a custom order</a>
+      </div>
+    </div>
   </section>
 
-  <section class="order" id="order" aria-labelledby="order-title">
-    <h2 id="order-title">Order a candle</h2>
-    <p>Tell us the scent, how many, and where to deliver. We reply with the price and how to pay.</p>
-    <a class="btn" href="mailto:hello@example.com?subject=Candle%20order">Send an order message</a>
+  <section class="block" id="care">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow">Candle care</p><h2 style="margin-top:8px">Get the most from every burn</h2></div></div>
+      <div class="care-grid">
+        <div><span class="k">2–3 hr</span><h3>The first burn</h3><p>Let the wax melt right to the edge the first time. This stops the candle tunnelling down the middle.</p></div>
+        <div><span class="k">5 mm</span><h3>Trim the wick</h3><p>Trim before every light for a calm flame and less soot on the glass.</p></div>
+        <div><span class="k">4 hr max</span><h3>Rest between burns</h3><p>Blow out after four hours and let it cool fully before lighting again.</p></div>
+        <div><span class="k">on a plate</span><h3>Sculpted pieces</h3><p>Swirls and rose hearts have no container. Always burn them on a heat-safe plate, away from drafts.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block about" id="contact" style="padding-top:24px">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">About</p>
+        <blockquote style="margin-top:12px">Handcrafted with heart.</blockquote>
+        <p>Flicker n Flame is Juliet's small candle studio. Each candle is poured in soy wax, unmoulded and finished by hand, so no two are exactly alike. Petals, pebbles and pearls are all wax, added one at a time.</p>
+      </div>
+      <div>
+        <p class="eyebrow">Order &amp; contact</p>
+        <h2 style="margin-top:8px;font-size:1.8rem">Add to your bag, then send us the order</h2>
+        <p style="color:var(--muted);margin-top:10px">We confirm availability, delivery charge and payment with you directly.</p>
+        <div class="contact-list" id="contactList"></div>
+      </div>
+    </div>
   </section>
 </main>
 
-<footer>
-  <p>Juliet Candle. Hand-poured with care.</p>
-</footer>
+<footer><div class="wrap"><span>© <span id="yr"></span> Flicker n Flame by Juliet</span><span>Soy wax candles · Let the scent set the mood · <a href="https://www.instagram.com/flickernflameby_juliet/" target="_blank" rel="noopener">@flickernflameby_juliet</a> · <a href="https://wa.me/917676777093" target="_blank" rel="noopener">WhatsApp +91 76767 77093</a></span></div></footer>
 
-<script src="script.js"></script>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Your bag">
+  <header><h2>Your bag</h2><button class="x" id="closeBag" aria-label="Close bag">✕</button></header>
+  <div class="lines" id="lines"></div>
+  <footer>
+    <div class="sum"><span>Subtotal</span><b id="subtotal">₹0</b></div>
+    <p class="note">Delivery is added when we confirm your order.</p>
+    <a class="btn primary" id="waBtn" href="#" target="_blank" rel="noopener">Send order on WhatsApp</a>
+    <button class="btn ghost" id="copyBtn">Copy order details</button>
+    <p class="toast" id="toast" aria-live="polite"></p>
+    <textarea id="orderText" readonly hidden style="width:100%;min-height:120px;font:inherit;font-size:.85rem;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px"></textarea>
+  </footer>
+</aside>
+
+<div class="lb" id="lb" hidden role="dialog" aria-label="Photo viewer">
+  <button class="close" id="lbClose" aria-label="Close photos">✕</button>
+  <img id="lbImg" alt="">
+  <div class="ctrl"><button id="lbPrev">Previous</button><span id="lbPos" class="mono"></span><button id="lbNext">Next</button></div>
+</div>
+
+<script>
+/* ===== Shop settings: fill these in ===== */
+const SHOP = {
+  whatsapp: "917676777093",   // country code + number, no + or spaces
+  whatsappShown: "+91 76767 77093",
+  instagram: "flickernflameby_juliet",
+  email: ""
+};
+
+const SCENTS = ["Unscented","Lavender","Vanilla","Jasmine","Sandalwood","Rose","Lemongrass"];
+const C = { // colour swatches
+  ivory:"#F1ECDD", sage:"#93AC8E", mint:"#8CC7AA", rose:"#D46A92", blush:"#E8B9C2",
+  plum:"#6B4A5E", mauve:"#8E6A80", lilac:"#B9A6D6", sky:"#6E9FD8"
+};
+
+/* Prices in ₹. img = photo shown for that colour (from /img). art = illustration for candles without photos yet. */
+const PRODUCTS = [
+  { id:"dough-bowl", name:"Botanical Dough Bowl", cat:"dough", badge:"Signature", price:1899,
+    desc:"A wooden dough bowl filled with soy wax and a garden of wax roses, succulents, daisies and pearls. A centrepiece that burns.",
+    specs:["3 wicks","≈ 40 hr burn","Reusable wooden bowl"],
+    colours:[{n:"Sage Botanical",h:C.sage,img:"botanical-bowl"},{n:"Ivory Bloom",h:C.ivory,img:"ivory-bowl"}],
+    gallery:["botanical-bowl","ivory-bowl"] },
+  { id:"succulent", name:"Succulent Garden Jar", cat:"jar", badge:"Bestseller", price:849,
+    desc:"A glass tumbler topped with wax cacti, echeveria and pebbles. A tiny desert garden until you light it.",
+    specs:["3 wicks","≈ 35 hr burn","Glass tumbler"],
+    colours:[{n:"Mint",h:C.mint,img:"succulent-2"},{n:"Sage",h:C.sage},{n:"Ivory",h:C.ivory}],
+    gallery:["succulent-2","succulent-1","succulent-4","succulent-3"] },
+  { id:"rose-garden", name:"Rose Garden Bowl", cat:"jar", price:699,
+    desc:"A wide glass bowl scattered with wax roses, peonies and carnations, finished with shimmer and pearls.",
+    specs:["2 wicks","≈ 25 hr burn","Glass bowl"],
+    colours:[{n:"Rose Pink",h:C.rose,img:"rose-garden"},{n:"Blush",h:C.blush},{n:"Lilac",h:C.lilac},{n:"Ivory",h:C.ivory}],
+    gallery:["rose-garden"] },
+  { id:"swirl", name:"Swirl Sculpted Candle", cat:"sculpted", price:349,
+    desc:"A twisted, ribbed candle with a flower-shaped top. Decor on a shelf, and burns on a plate.",
+    specs:["1 wick","≈ 12 hr burn","≈ 8 cm tall"],
+    colours:[{n:"Ivory",h:C.ivory,img:"swirl-5"},{n:"Mint",h:C.mint,img:"swirl-4"},{n:"Mauve",h:C.mauve,img:"swirl-6"},{n:"Blush Lilac",h:"#C9A3B5",img:"swirl-8"},{n:"Sky Blue",h:C.sky,img:"swirl-1"}],
+    gallery:["swirl-3","swirl-1","swirl-7","swirl-2","swirl-5","swirl-4","swirl-6","swirl-8"] },
+  { id:"heart", name:"Rose Heart Candle", cat:"sculpted", badge:"Gift favourite", price:249,
+    desc:"A heart-shaped bloom of layered wax petals. Loved as wedding favours and return gifts.",
+    specs:["1 wick","≈ 8 hr burn","≈ 6 cm across"],
+    pack:[{n:"Single",p:249},{n:"Set of 4, mixed colours",p:899}],
+    colours:[{n:"Rose Pink",h:C.rose,img:"heart-5"},{n:"Mint",h:C.mint,img:"heart-4"},{n:"Ivory",h:C.ivory,img:"heart-3"},{n:"Plum",h:C.plum,img:"heart-2"}],
+    gallery:["heart-1","heart-2","heart-3","heart-4","heart-5"] },
+
+];
+
+const CATS = [["all","All candles"],["dough","Dough bowls"],["jar","Jars & bowls"],["sculpted","Sculpted"]];
+
+/* ---------- illustrations ---------- */
+function shade(hex,amt){const n=parseInt(hex.slice(1),16);let r=n>>16,g=n>>8&255,b=n&255;
+  const f=v=>Math.max(0,Math.min(255,Math.round(v+amt*255)));return "#"+[f(r),f(g),f(b)].map(v=>v.toString(16).padStart(2,"0")).join("")}
+function art(kind,h){
+  const d=shade(h,-.12), l=shade(h,.08), wick='<rect x="198" y="0" width="4" height="22" rx="2" fill="#3a3a36"/>';
+  const ground='<ellipse cx="200" cy="420" rx="130" ry="16" fill="#000" opacity=".08"/>';
+  const wrap=s=>`<svg viewBox="0 0 400 500" role="img" aria-label="Illustration" xmlns="http://www.w3.org/2000/svg">${ground}${s}</svg>`;
+  if(kind==="jar") return wrap(`<g transform="translate(0,150)">
+    <rect x="110" y="20" width="180" height="250" rx="22" fill="${h}" opacity=".55"/>
+    <rect x="118" y="40" width="164" height="220" rx="16" fill="#F4F1E8"/>
+    <ellipse cx="200" cy="44" rx="82" ry="10" fill="#FBF9F2"/>
+    <g transform="translate(0,22)">${wick}</g>
+    <rect x="140" y="130" width="120" height="80" rx="6" fill="#fff" opacity=".92"/>
+    <text x="200" y="168" text-anchor="middle" font-family="Parisienne,cursive" font-size="22" fill="#5a4a3a">flicker n flame</text>
+    <text x="200" y="190" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" letter-spacing="2" fill="#7a6a5a">SOY WAX</text>
+    <rect x="124" y="30" width="10" height="220" rx="5" fill="#fff" opacity=".35"/></g>`);
+  if(kind==="tin") return wrap(`<g transform="translate(0,230)">
+    <ellipse cx="270" cy="150" rx="78" ry="22" fill="${d}"/><ellipse cx="270" cy="142" rx="78" ry="22" fill="${h}"/><ellipse cx="270" cy="142" rx="62" ry="15" fill="${l}"/>
+    <path d="M70 70 v100 a90 26 0 0 0 180 0 v-100z" fill="${h}"/><ellipse cx="160" cy="70" rx="90" ry="26" fill="${d}"/><ellipse cx="160" cy="70" rx="82" ry="22" fill="#F6F2E6"/>
+    <g transform="translate(-40,30)">${wick}</g><path d="M70 100 v60" stroke="#fff" stroke-width="8" opacity=".35" stroke-linecap="round"/></g>`);
+  if(kind==="pillar") return wrap(`<g transform="translate(0,90)">
+    <path d="M120 60 v240 a80 22 0 0 0 160 0 v-240z" fill="${h}"/><ellipse cx="200" cy="60" rx="80" ry="22" fill="${l}"/>
+    <ellipse cx="200" cy="62" rx="60" ry="14" fill="${d}" opacity=".25"/><g transform="translate(0,34)">${wick}</g>
+    <path d="M140 80 v200" stroke="#fff" stroke-width="12" opacity=".22" stroke-linecap="round"/></g>`);
+  if(kind==="bubble"){let s="";for(let r=0;r<3;r++)for(let c=0;c<3;c++){const x=130+c*70,y=190+r*70;
+      s+=`<circle cx="${x}" cy="${y}" r="38" fill="${h}"/><circle cx="${x-10}" cy="${y-12}" r="11" fill="#fff" opacity=".28"/><circle cx="${x+6}" cy="${y+8}" r="30" fill="${d}" opacity=".12"/>`;}
+    return wrap(`<g transform="translate(0,20)">${s}<g transform="translate(0,130)">${wick}</g></g>`);}
+  if(kind==="tealight"){let s="";[[110,330],[200,350],[290,330],[155,260],[245,260]].forEach(([x,y])=>{
+      s+=`<path d="M${x-48} ${y} l6 36 h84 l6 -36z" fill="#C9CDCF"/><ellipse cx="${x}" cy="${y}" rx="48" ry="12" fill="#DCE0E2"/><ellipse cx="${x}" cy="${y}" rx="40" ry="9" fill="${h}"/><rect x="${x-2}" y="${y-18}" width="4" height="16" rx="2" fill="#3a3a36"/>`;});
+    return wrap(s);}
+  if(kind==="melts"){let s=`<rect x="80" y="210" width="240" height="160" rx="16" fill="#E9ECE6" stroke="#cfd5cc"/>`;
+    for(let r=0;r<2;r++)for(let c=0;c<3;c++){const x=96+c*72,y=226+r*72;s+=`<rect x="${x}" y="${y}" width="64" height="64" rx="10" fill="${h}"/><path d="M${x+32} ${y+44} l-14 -14 a8 8 0 0 1 14 -10 a8 8 0 0 1 14 10z" fill="${d}" opacity=".45"/>`;}
+    return wrap(s);}
+  return wrap("");
+}
+
+/* ---------- state ---------- */
+const sel = {}; PRODUCTS.forEach(p=>sel[p.id]={c:0,s:0,k:0});
+let filter = "all";
+let bag = [];
+try{ bag = JSON.parse(localStorage.getItem("fnf-bag")||"[]"); if(!Array.isArray(bag)) bag=[]; }catch(e){ bag=[]; }
+const save=()=>{try{localStorage.setItem("fnf-bag",JSON.stringify(bag))}catch(e){}};
+const inr=n=>"₹"+n.toLocaleString("en-IN");
+const byId=id=>PRODUCTS.find(p=>p.id===id);
+const priceOf=(p,k)=>p.pack?p.pack[k].p:p.price;
+function mediaHTML(p,ci){const col=p.colours[ci];
+  if(col.img) return `<img src="img/${col.img}.webp" alt="${p.name} in ${col.n}" loading="lazy">`;
+  if(p.art) return art(p.art,col.h);
+  const first=p.colours.find(c=>c.img); return `<img src="img/${first.img}.webp" alt="${p.name}" loading="lazy">`;
+}
+
+/* ---------- render ---------- */
+function renderChips(){
+  document.getElementById("chips").innerHTML = CATS.map(([k,l])=>`<button class="chip" data-f="${k}" aria-pressed="${filter===k}">${l}</button>`).join("");
+}
+function cardHTML(p){
+  const s=sel[p.id], col=p.colours[s.c];
+  const photoNote = p.art ? `<span class="soon">photo coming soon</span>`
+    : (!col.img ? `<span class="photos">Photo shows ${p.colours.find(c=>c.img).n}</span>`
+    : (p.gallery && p.gallery.length>1 ? `<span class="photos">${p.gallery.length} photos</span>`:""));
+  return `<article class="card" data-id="${p.id}">
+    <div class="media">${mediaHTML(p,s.c)}
+      ${p.gallery?`<button class="zoom" data-zoom="${p.id}" aria-label="See photos of ${p.name}"></button>`:""}
+      ${p.badge?`<span class="badge">${p.badge}</span>`:""}${photoNote}</div>
+    <div class="body">
+      <h3>${p.name}</h3>
+      <p class="desc">${p.desc}</p>
+      <div class="specs mono">${p.specs.map(x=>`<span>${x}</span>`).join("")}</div>
+      <div><p class="opt-label">Colour: <b>${col.n}</b></p>
+        <div class="swatches">${p.colours.map((c,i)=>`<button class="sw" style="--c:${c.h}" data-c="${i}" aria-pressed="${i===s.c}" aria-label="${c.n}" title="${c.n}"></button>`).join("")}</div></div>
+      <div class="selects ${p.pack?"two":""}">
+        <label><span class="opt-label">Scent</span><select id="scent-${p.id}" data-s>${SCENTS.map((x,i)=>`<option value="${i}" ${i===s.s?"selected":""}>${x}</option>`).join("")}</select></label>
+        ${p.pack?`<label><span class="opt-label">Pack</span><select id="pack-${p.id}" data-k>${p.pack.map((x,i)=>`<option value="${i}" ${i===s.k?"selected":""}>${x.n}</option>`).join("")}</select></label>`:""}
+      </div>
+      <div class="buy"><span class="price">${inr(priceOf(p,s.k))}</span><button class="add" data-add>Add to bag</button></div>
+    </div></article>`;
+}
+function renderGrid(){
+  const list = PRODUCTS.filter(p=>filter==="all"||p.cat===filter);
+  document.getElementById("grid").innerHTML = list.map(cardHTML).join("");
+}
+function rerenderCard(id){const el=document.querySelector(`.card[data-id="${id}"]`); if(el){el.outerHTML=cardHTML(byId(id));}}
+
+/* ---------- bag ---------- */
+function lineLabel(it){const p=byId(it.id);return [p.colours[it.c].n,SCENTS[it.s],p.pack?p.pack[it.k].n:null].filter(Boolean).join(" · ")}
+function orderText(){
+  const rows = bag.map(it=>{const p=byId(it.id);return `• ${p.name} (${lineLabel(it)}) × ${it.q} = ${inr(priceOf(p,it.k)*it.q)}`});
+  const total = bag.reduce((a,it)=>a+priceOf(byId(it.id),it.k)*it.q,0);
+  return `Hi Juliet! I'd like to order from Flicker n Flame:\n\n${rows.join("\n")}\n\nSubtotal: ${inr(total)}\n\nName:\nDelivery address:\nPin code:`;
+}
+function renderBag(){
+  const count = bag.reduce((a,it)=>a+it.q,0);
+  document.getElementById("bagCount").textContent = count;
+  const lines = document.getElementById("lines");
+  if(!bag.length){ lines.innerHTML = `<p class="empty">Your bag is empty.<br>Add a candle to get started.</p>`; }
+  else lines.innerHTML = bag.map((it,i)=>{const p=byId(it.id);
+    return `<div class="line"><div class="thumb">${mediaHTML(p,it.c)}</div>
+      <div><div class="t">${p.name}</div><div class="m">${lineLabel(it)}</div>
+        <div class="qty"><button data-q="${i}" data-d="-1" aria-label="One less">−</button><span>${it.q}</span><button data-q="${i}" data-d="1" aria-label="One more">+</button></div></div>
+      <div class="p">${inr(priceOf(p,it.k)*it.q)}</div></div>`}).join("");
+  const total = bag.reduce((a,it)=>a+priceOf(byId(it.id),it.k)*it.q,0);
+  document.getElementById("subtotal").textContent = inr(total);
+  const wa = document.getElementById("waBtn");
+  wa.hidden = !SHOP.whatsapp || !bag.length;
+  wa.href = `https://wa.me/${SHOP.whatsapp}?text=${encodeURIComponent(orderText())}`;
+  document.getElementById("copyBtn").disabled = !bag.length;
+  document.getElementById("copyBtn").className = SHOP.whatsapp ? "btn ghost" : "btn primary";
+  save();
+}
+function addToBag(id){
+  const s=sel[id], key=`${id}|${s.c}|${s.s}|${s.k}`;
+  const f=bag.find(it=>`${it.id}|${it.c}|${it.s}|${it.k}`===key);
+  if(f) f.q++; else bag.push({id,c:s.c,s:s.s,k:s.k,q:1});
+  renderBag();
+}
+const drawer=document.getElementById("drawer"), scrim=document.getElementById("scrim");
+function openBag(){drawer.hidden=false;scrim.hidden=false;document.getElementById("closeBag").focus()}
+function closeBag(){drawer.hidden=true;scrim.hidden=true;document.getElementById("orderText").hidden=true;document.getElementById("toast").textContent=""}
+
+/* ---------- lightbox ---------- */
+let lbList=[], lbI=0;
+const lb=document.getElementById("lb");
+function showLb(){document.getElementById("lbImg").src=`img/${lbList[lbI]}.webp`;document.getElementById("lbPos").textContent=`${lbI+1} / ${lbList.length}`;
+  document.getElementById("lbPrev").hidden=document.getElementById("lbNext").hidden=lbList.length<2}
+function openLb(id){const p=byId(id);lbList=p.gallery;const cur=p.colours[sel[id].c].img;lbI=Math.max(0,lbList.indexOf(cur));
+  document.getElementById("lbImg").alt=p.name;lb.hidden=false;showLb();document.getElementById("lbClose").focus()}
+
+/* ---------- events ---------- */
+document.getElementById("chips").addEventListener("click",e=>{const b=e.target.closest("[data-f]");if(!b)return;filter=b.dataset.f;renderChips();renderGrid()});
+const grid=document.getElementById("grid");
+grid.addEventListener("click",e=>{
+  const card=e.target.closest(".card"); if(!card) return; const id=card.dataset.id;
+  const sw=e.target.closest("[data-c]"); if(sw){sel[id].c=+sw.dataset.c;rerenderCard(id);document.querySelector(`.card[data-id="${id}"] [data-c="${sw.dataset.c}"]`).focus();return}
+  if(e.target.closest("[data-zoom]")){openLb(id);return}
+  const add=e.target.closest("[data-add]"); if(add){addToBag(id);add.textContent="Added ✓";add.classList.add("done");
+    setTimeout(()=>{add.textContent="Add to bag";add.classList.remove("done")},1400)}
+});
+grid.addEventListener("change",e=>{const card=e.target.closest(".card");if(!card)return;const id=card.dataset.id;
+  if(e.target.matches("[data-s]")) sel[id].s=+e.target.value;
+  if(e.target.matches("[data-k]")){sel[id].k=+e.target.value;card.querySelector(".price").textContent=inr(priceOf(byId(id),sel[id].k))}});
+document.getElementById("openBag").addEventListener("click",openBag);
+document.getElementById("closeBag").addEventListener("click",closeBag);
+scrim.addEventListener("click",closeBag);
+document.getElementById("lines").addEventListener("click",e=>{const b=e.target.closest("[data-q]");if(!b)return;const it=bag[+b.dataset.q];
+  it.q+=+b.dataset.d; if(it.q<1) bag.splice(+b.dataset.q,1); renderBag()});
+document.getElementById("copyBtn").addEventListener("click",()=>{
+  const txt=orderText(), ta=document.getElementById("orderText"), t=document.getElementById("toast");
+  const where = SHOP.instagram ? `Paste it in a DM to @${SHOP.instagram}.` : "Paste it in a message to us.";
+  ta.value=txt;
+  const fallback=()=>{ta.hidden=false;ta.focus();ta.select();t.textContent="Select the text below and copy it. "+where};
+  try{navigator.clipboard.writeText(txt).then(()=>{t.textContent="Order copied. "+where},fallback)}catch(err){fallback()}
+});
+document.getElementById("lbClose").addEventListener("click",()=>lb.hidden=true);
+document.getElementById("lbPrev").addEventListener("click",()=>{lbI=(lbI-1+lbList.length)%lbList.length;showLb()});
+document.getElementById("lbNext").addEventListener("click",()=>{lbI=(lbI+1)%lbList.length;showLb()});
+lb.addEventListener("click",e=>{if(e.target===lb)lb.hidden=true});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){lb.hidden=true;closeBag()}
+  if(!lb.hidden&&e.key==="ArrowRight")document.getElementById("lbNext").click();
+  if(!lb.hidden&&e.key==="ArrowLeft")document.getElementById("lbPrev").click();
+});
+
+/* contact */
+(function(){
+  const rows=[];
+  if(SHOP.whatsapp) rows.push(`<div><span class="l">WhatsApp</span><a href="https://wa.me/${SHOP.whatsapp}" target="_blank" rel="noopener">${SHOP.whatsappShown}</a></div>`);
+  if(SHOP.instagram) rows.push(`<div><span class="l">Instagram</span><a href="https://instagram.com/${SHOP.instagram}" target="_blank" rel="noopener">@${SHOP.instagram}</a></div>`);
+  if(SHOP.email) rows.push(`<div><span class="l">Email</span><span>${SHOP.email}</span></div>`);
+  rows.push(`<div><span class="l">How to order</span><span>Add candles to your bag, open it, and send us the order details.</span></div>`);
+  document.getElementById("contactList").innerHTML=rows.join("");
+})();
+document.getElementById("yr").textContent=new Date().getFullYear();
+
+renderChips(); renderGrid(); renderBag();
+</script>
+
 </body>
 </html>
